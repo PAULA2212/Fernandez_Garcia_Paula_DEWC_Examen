@@ -8,10 +8,56 @@
 
 <body>
     <h1>Suma de Números Primos</h1>
+    <script>
+
+        //creamos la funcion calcularSumaPrimos que sera invocada al clickar en el boton HTML
+        function calcularSumaPrimos(){
+        
+        //esta variable permitira iterar al bucle while:
+        let numeroPreguntas = 0;
+
+        //aqui guardaremos el valor de la suma de los primos:
+        let sumaPrimos = 0;
+
+
+            //bucle while para asegurar que itera durante 15 vueltas:
+            while (numeroPreguntas < 15){
+
+                //el numero sera primo hasta que se demuestre lo contrario:
+                esPrimo = true;
+
+                //preguntamos al usuario por el numero y lo convertimos en un int con el que podamos operar:
+                let numero = parseInt(prompt("Porfavor escribe un número: "));
+
+                //algoritmo que descarta todos aquellos numeros que no son primos por definicion matematica:
+                if (numero <= 1){
+                    esPrimo = false;
+                } else {
+                    for (let i = 2; i <= numero / 2; i++){
+                        if (numero % i === 0){
+                            esPrimo = false;
+                            break;
+                        }
+                    }
+                }
+
+                //solo si es primo, lo sumamos a la variable sumaPrimos.
+                if(esPrimo){
+                    sumaPrimos += numero;
+                }
+
+            //incrementamos el valor de numeroPreguntas para que el bucle while funcione:
+            numeroPreguntas++;
+            }
+        
+        //guardamos en una variable el div donde mostraremos los resultados:
+        let resultado = document.getElementById('resultados');
+
+        //usando el metodo append con parametro de entrada sumaPrimos imprimimos en el div del doc el resultado de la operacion:
+        resultado.append(sumaPrimos);
+        }
+    </script>
     <button onclick="calcularSumaPrimos()">Calcular Suma de Números Primos</button>
     <div id="resultados"></div>
-
-  
 </body>
-
 </html>
